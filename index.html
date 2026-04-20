@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime em Caos | Oficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Rajdhani:wght@400;700&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #ff2233;
+            --cyan: #00f2ea;
+            --gold: #ffd200;
+            --dark: #050505;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            background: url('anime.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .overlay-fix {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.65); /* Escureci um pouco mais o fundo geral */
+            z-index: -1;
+        }
+
+        .header-section {
+            margin-top: 80px;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .title {
+            font-family: 'Black Han Sans', sans-serif;
+            font-size: clamp(2.8rem, 10vw, 5.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--red);
+            text-shadow: 0 0 15px rgba(255, 34, 51, 0.8);
+            animation: pulseSuave 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseSuave {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.9; }
+        }
+
+        .title-decoration {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 12px;
+            justify-content: center;
+        }
+        .deco-line { height: 1px; width: 80px; background: linear-gradient(90deg, transparent, var(--red), transparent); }
+        .deco-icon { font-size: 0.7rem; color: var(--gold); letter-spacing: 3px; font-family: 'Orbitron', monospace; }
+
+        /* AJUSTE DE VISIBILIDADE DO SUBTÍTULO */
+        .subtitle {
+            color: #fff;
+            font-size: 1.1rem; /* Aumentado */
+            font-weight: 700; /* Negrito */
+            letter-spacing: 3px;
+            margin: 25px auto 0;
+            max-width: 600px;
+            line-height: 1.6;
+            text-transform: uppercase;
+            /* Sombra dupla para garantir leitura em qualquer fundo */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 1), 0 0 10px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.2); /* Leve fundo fumê atrás das letras */
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 45px 0 35px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid rgba(255,34,51,0.3);
+            box-shadow: 0 0 20px rgba(255, 34, 51, 0.2);
+        }
+        video { width: 100%; display: block; aspect-ratio: 16/9; }
+
+        .social-grid {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-btn {
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .social-btn:hover { transform: translateY(-3px) scale(1.03); }
+        .yt { background: linear-gradient(135deg, #cc0000, #ff0000); }
+        .tk { background: #111; border: 1px solid var(--cyan); }
+        .ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+
+        .sponsor-wrapper { margin-bottom: 50px; position: relative; }
+        .sponsor-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            padding: 14px 30px;
+            border: 1px solid rgba(255,210,0,0.3);
+            border-radius: 50px;
+            background: rgba(0,0,0,0.6);
+            font-family: 'Orbitron', monospace;
+            transition: 0.3s;
+        }
+        .sponsor-btn:hover { background: rgba(255,210,0,0.1); transform: scale(1.05); }
+
+        .sponsor-tag {
+            position: absolute;
+            top: -11px; right: -10px;
+            background: #25D366;
+            color: white;
+            font-size: 0.55rem;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .footer {
+            margin: 30px 0 50px;
+            font-size: 0.75rem;
+            color: #888;
+            font-family: 'Orbitron', monospace;
+            text-align: center;
+        }
+        .footer span { color: var(--red); }
+    </style>
+</head>
+<body>
+
+    <div class="overlay-fix"></div>
+
+    <header class="header-section">
+        <h1 class="title">Anime em Caos</h1>
+        <div class="title-decoration">
+            <div class="deco-line"></div>
+            <span class="deco-icon">⚡ CAOS ⚡</span>
+            <div class="deco-line"></div>
+        </div>
+        <p class="subtitle">O DNA DE DEUS DESPERTOU EM 2008.<br>A EVOLUÇÃO NÃO FOI APENAS UMA BÊNÇÃO.</p>
+    </header>
+
+    <div class="video-container">
+        <video controls poster="anime.jpg">
+            <source src="anime.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="social-grid">
+        <a href="LINK_DO_YOUTUBE" target="_blank" class="social-btn yt">
+            <i class="fab fa-youtube"></i> YouTube
+        </a>
+        <a href="https://www.instagram.com/k4iky_18" target="_blank" class="social-btn ig">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="LINK_DO_TIKTOK" target="_blank" class="social-btn tk">
+            <i class="fab fa-tiktok"></i> TikTok
+        </a>
+    </div>
+
+    <div class="sponsor-wrapper">
+        <a href="https://wa.me/5588988152717" target="_blank" class="sponsor-btn">
+            <i class="fas fa-star"></i>
+            <span>Torne-se patrocinador</span>
+        </a>
+        <span class="sponsor-tag"><i class="fab fa-whatsapp"></i> WhatsApp</span>
+    </div>
+
+    <footer class="footer">
+        <span>Anime em Caos</span><br>
+        © 2026 Todos os direitos reservados.
+    </footer>
+
+</body>
+</html>
